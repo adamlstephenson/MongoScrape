@@ -3,7 +3,7 @@ const express = require("express");
 const bodyParser = require("body-parser");
 const mongoose = require("mongoose");
 const cheerio = require("cheerio");
-const axios = require("axios");
+const request = require("request");
 
 // Require all models
 var db = require("./models");
@@ -26,22 +26,28 @@ mongoose.connect("mongodb://localhost/scraper")
 
 //GET route for scraping
 app.get("/scrape", (req, res) => {
-    //Axios
-    axios.get("https://midcurrent.com/").
-    then(((response) => {
-        //Cheerio shorthand selector
-        const $ = cheerio.load(response.data);
+    console.log("hello")
+    //Make a request of Slate's h3 headlines
+    request("https://slate.com/", (error, response, html) => {
+        // Load the html body from request into cheerio
+        var $ = cheerio.load(html);
+        //Empty object to save results
+        let result = {};
+        //For each element with a class of "story-teaser_headline"
+        $(".story-teaser").each(((i, element) => {
+            // Save the headline, href, and summary of each link enclosed in the current element
+            result.headline = $(element).children("a").attr("title");
+            result.link = $(element).children("a").attr("href");
+            //let summary = $(element).
 
-        //Grab every headline
-        $("a").each(((i, element) => {
-            //Empty result object
-            const result = {};
-
-            //Add text, link, and summary and save them as properties of the result object
-            result.headline = $(this).text();
-            console.log(result.headline)
+            // Create a new Article using the `result` object built from scraping
+            db.Article.create(result).
+            then((dbArticle) => {
+                console.log(dbArticle)
+            })
         }))
-    }))
+
+    })
 })
 
 //Listener
