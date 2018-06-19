@@ -41,17 +41,21 @@ app.get("/scrape", (req, res) => {
             //let summary = $(element).
 
             // Create a new Article using the `result` object built from scraping
-            db.Article.create(result).
-            then((dbArticle) => {
-                console.log(dbArticle)
-            })
+            db.Article.create(result)
+                .then((dbArticle) => {
+                    console.log(dbArticle)
+                })
+                .catch((err) => {
+                    return res.json(err);
+                })
         }))
-
+        // If we were able to successfully scrape and save an Article, send a message to the client
+        res.send("Scrape Complete");
     })
 })
 
 //Listener
 app.listen(PORT, () => {
     console.log("app listening on port: " + PORT);
-    
+
 })
