@@ -54,6 +54,18 @@ app.get("/scrape", (req, res) => {
     })
 })
 
+//Route for getting all articles from the database
+app.get("/articles", (req, res) => {
+    //Grab every document in Articles collection
+    db.Article.find({})
+    .then((dbArticle) => {
+        res.json(dbArticle)
+    })
+    .catch((err) => {
+        res.json(err)
+    })
+})
+
 //Listener
 app.listen(PORT, () => {
     console.log("app listening on port: " + PORT);
