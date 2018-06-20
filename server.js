@@ -19,14 +19,23 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // Use express.static to serve the public folder as a static directory
 app.use(express.static("public"));
 
+// Set Handlebars.
+const exphbs = require("express-handlebars");
+app.engine("handlebars", exphbs({ defaultLayout: "main" }));
+app.set("view engine", "handlebars");
+
 //Connect to Mongo DB
 mongoose.connect("mongodb://localhost/scraper")
 
 //Routes
 
+//GET route for home page
+app.get("/", (req, res) => {
+    res.render("index");
+})
+
 //GET route for scraping
 app.get("/scrape", (req, res) => {
-    console.log("hello")
     //Make a request of Slate's h3 headlines
     request("https://slate.com/", (error, response, html) => {
         // Load the html body from request into cheerio
