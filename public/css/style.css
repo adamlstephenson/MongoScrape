@@ -1,0 +1,13 @@
+p {
+    border-color: red;
+    border-style: solid;
+    margin-top: 2%;
+    padding: 5px;
+}
+
+button {
+    margin-left: 15px;
+    margin-bottom: 2%;
+    width: 100px;
+    height: 30px;
+}
