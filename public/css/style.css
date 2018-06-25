@@ -11,3 +11,32 @@ button {
     width: 100px;
     height: 30px;
 }
+
+#new-articles {
+    width: 200px;
+}
+
+#clear-articles {
+    width: 150px;
+}
+
+h1 {
+    text-align: center;
+    
+}
+
+h4 {
+    text-align: center;
+    margin-top: 3%;
+}
+
+.jumbotron {
+    background-image: url("../images/scroll.jpg");
+    color: white;
+    text-shadow:
+    -1px -1px 0 #000,  
+     1px -1px 0 #000,
+     -1px 1px 0 #000,
+      1px 1px 0 #000;
+    
+}

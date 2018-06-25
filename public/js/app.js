@@ -5,14 +5,30 @@
 //     }))
 // })
 
-$.getJSON("/articles", function(data) {
+$AAAA.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
         let button = $("<button>")
       // Display the apropos information on the page
-      $("#articles").append("<p data-id='" + data[i]._id + "'>" + data[i].headline + "<br />" + data[i].link + "<button 'class=button-success'> Save </button>" + "</p>");
-    //   $("p").addClass("article-divs");
+      $("#articles").append("<a href=data[i].link' + 'data-id='" + data[i]._id + "'>" + data[i].headline + "<button 'class=button-success' data-id=" + data[i]._id + "> Save </button>" + "</a>");
+      $("p").addClass("article-divs");
     //   $(".article-divs").append(button);
     }
   });
+
+  $(document).on("click", "p", function () {
+
+      $("#notes").empty();
+
+      let thisId = $(this).attr("data-id");
+
+      $.ajax({
+          method: "GET",
+          url: "/articles/" + thisId
+      })
+      .then(((data) => {
+          console.log(data)
+      }))
+
+  })
   
