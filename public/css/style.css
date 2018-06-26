@@ -1,8 +1,8 @@
-p {
-    border-color: red;
-    border-style: solid;
+.article-divs {
+    background-color: maroon;
+    color: wheat;
     margin-top: 2%;
-    padding: 5px;
+    padding: 15px;
 }
 
 button {
@@ -39,4 +39,10 @@ h4 {
      -1px 1px 0 #000,
       1px 1px 0 #000;
     
+}
+
+#save-button {
+    background-color: aqua;
+    margin-right: 10px;
+    color: black;
 }
