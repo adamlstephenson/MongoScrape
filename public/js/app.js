@@ -10,7 +10,7 @@ $.getJSON("/articles", function(data) {
     for (var i = 0; i < data.length; i++) {
         let button = $("<button>")
       // Display the apropos information on the page
-      $("#articles").append("<a href=data[i].link' + 'data-id='" + data[i]._id + "'>" + data[i].headline + "<button 'class=button-success' data-id=" + data[i]._id + "> Save </button>" + "</a>");
+      $("#articles").append("<a href='" + data[i].link + "' 'data-id='" + data[i]._id + "'>" + data[i].headline + "<button 'class=button-success' data-id=" + data[i]._id + "> Save </button>" + "</a>");
       $("p").addClass("article-divs");
     //   $(".article-divs").append(button);
     }
