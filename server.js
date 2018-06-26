@@ -21,9 +21,6 @@ app.use(express.static("public"));
 
 // Set mongoose to leverage built in JavaScript ES6 Promises
 // Connect to the Mongo DB
-mongoose.Promise = Promise;
-mongoose.connect(MONGODB_URI);
-
 
 // Set Handlebars.
 const exphbs = require("express-handlebars");
@@ -31,6 +28,7 @@ app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
 //Connect to Mongo DB
+mongoose.Promise = Promise;
 mongoose.connect("mongodb://localhost/scraper")
 
 //Routes
