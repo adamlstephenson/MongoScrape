@@ -5,7 +5,7 @@
 //     }))
 // })
 
-$AAAA.getJSON("/articles", function(data) {
+$.getJSON("/articles", function(data) {
     // For each one
     for (var i = 0; i < data.length; i++) {
         let button = $("<button>")
