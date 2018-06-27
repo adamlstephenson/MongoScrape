@@ -3,6 +3,11 @@
     color: wheat;
     margin-top: 2%;
     padding: 15px;
+    font-size: 16px;
+}
+
+#article-divs {
+    max-width: 1000px;
 }
 
 button {
@@ -42,7 +47,16 @@ h4 {
 }
 
 .button-success {
-    background-color: aqua;
+    background-color: #FFFFFF;
     margin-right: 10px;
+    color: black;
+}
+
+.summary-text {
+    margin-top: -11;
+    margin-bottom: 25;
+    background-color: #EFD5B9;
+    padding: 7px;
+    max-width: 900px;
     color: black;
 }
