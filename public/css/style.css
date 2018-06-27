@@ -60,3 +60,13 @@ h4 {
     max-width: 900px;
     color: black;
 }
+
+#bodyinput {
+    width: 100%;
+    padding: 50px;
+    margin-top: 2%;
+}
+
+#titleinput {
+    width: 100%;
+}
