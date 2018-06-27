@@ -86,7 +86,7 @@ app.get("/articles", (req, res) => {
 })
 
 //Listener
-app.listen(PORT, () => {
+app.listen(process.env.PORT || PORT, () => {
     console.log("app listening on port: " + PORT);
 
 })
